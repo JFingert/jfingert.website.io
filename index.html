@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+    <style type="text/css">
+
+body {
+  background: black;
+}
+
+p {
+	color: white;
+}
+
+rect {
+  width: 0;
+  stroke: #ddddee;
+  
+}
+
+.square:nth-child(2n + 1) rect {
+  stroke: #fff;
+}
+
+    </style>
+  </head>
+  <body>
+  	<p>welcome!</p>
+    <script type="text/javascript" src="http://mbostock.github.com/d3/d3.js?2.5.1"></script>
+    <script type="text/javascript">
+
+
+
+/////////
+
+
+var canvas = d3.select("body")
+                  .append("svg")
+                  .attr("width", 1500)
+                  .attr("height", 1500);
+
+
+
+    var group = canvas.append("g")
+                .attr("transform", "translate(100, 100)");
+//     rotate();
+// }
+
+
+
+
+//Radius in pixels
+      var r = 100;                          
+      var p = Math.PI * 2;                 
+//Perimeter in angle - full circle in radians is 2Pi
+
+
+//D3 arc generator with attributes
+function rotate() {
+      var arcOne = d3.svg.arc()                
+                  .innerRadius(r - 3)
+                  .outerRadius(r - 15)
+                  .startAngle(Math.floor(Math.random()*10))
+                  .endAngle(p - 2);
+      var arcTwo = d3.svg.arc()                
+                  .innerRadius(r - 15)
+                  .outerRadius(r - 27)
+                  .startAngle(Math.floor(Math.random()*10))
+                  .endAngle(p - 2);
+      var arcThree = d3.svg.arc()                
+                  .innerRadius(r - 27)
+                  .outerRadius(r - 39)
+                  .startAngle(Math.floor(Math.random()*10))
+                  .endAngle(p - 2);
+      var arcFour = d3.svg.arc()                
+                  .innerRadius(r - 39)
+                  .outerRadius(r - 51)
+                  .startAngle(Math.floor(Math.random()*10))
+                  .endAngle(p - 2);
+      var arcFive = d3.svg.arc()                
+                  .innerRadius(r - 51)
+                  .outerRadius(r - 63)
+                  .startAngle(Math.floor(Math.random()*10))
+                  .endAngle(p - 2);
+  
+
+
+//Append arc to canvas object group
+
+      group.append("path")                   
+            .attr("d", arcOne)
+            .attr("fill", "red");
+            
+      group.append("path")
+      			.attr("d", arcTwo)
+            .attr("fill", "orange");
+
+      group.append("path")
+      			.attr("d", arcThree)
+            .attr("fill", "yellow");
+
+      group.append("path")
+      			.attr("d", arcFour)
+            .attr("fill", "green");
+            
+      group.append("path")
+      			.attr("d", arcFive)
+            .attr("fill", "blue");
+
+// setInterval(update(), 200);
+// update();
+
+setInterval(function(){
+      // d3.selectAll(".arc.innerRadius").data.clear();
+      // d3.selectAll(".arc.outerRadius").data.clear();
+	     	group.append("path")
+						.transition()
+						.attr("d", arcOne)
+					  .attr("fill","black")
+					  .ease("elastic");
+
+				group.append("path")
+					.transition()
+					.attr("d", arcTwo)
+				  .attr("fill","black")
+				  .ease("elastic");
+
+				group.append("path")
+					.transition()
+					.attr("d", arcThree)
+				  .attr("fill","black")
+				  .ease("elastic");
+
+				group.append("path")
+					.transition()
+					.attr("d", arcFour)
+				  .attr("fill","black")
+				  .ease("elastic");
+
+				group.append("path")
+					.transition()
+					.attr("d", arcFive)
+				  .attr("fill","black")
+				  .ease("elastic");
+    },950);
+
+
+	}		
+
+
+
+  
+
+		
+
+
+    setInterval(function(){
+      // d3.selectAll(".arc.innerRadius").data.clear();
+      // d3.selectAll(".arc.outerRadius").data.clear();
+     	rotate();
+
+    },250);
+
+
+   
+
+    // d3.selectAll("*")
+    //     .style("opacity", 0)
+    //     .transition()
+    //     .duration(300)
+    //     .style("opacity", 1)
+
+    // fade out and remove all exiting elements
+    // node.exit()
+    //     .style("opacity", 1)
+    //     .transition()
+    //     .duration(300)
+    //     .style("opacity", 0)
+    //     .remove()
+
+
+
+	// d3.selctAll(".arc").clear();
+	//  group = canvas.append("g")
+ //        .attr("transform", "translate(100, 100)");
+// for (var i = 1000; i <= 10000; i += 100) {
+
+		// setInterval(function(){
+		// 	// svg.selectAll(".rect")
+		// 	// 	.attr("fill", "white");
+
+  //     rotate();
+
+  //   },500);
+
+
+    
+			// setInterval(rotate(), 2000);
+			// setInterval(arcOne.remove(), 3000);
+
+
+	
+
+// transition.transition().each(function() {
+//   d3.selectAll(".arc").transition()
+//       .style("opacity", 0)
+//       .remove();
+// });
+
+
+    // var color = d3.scale.linear()
+    //               .domain([50,100])
+    //               .range(colors);
+
+
+    // var rect = canvas.append("rect")
+    //               .attr("width", 100)
+    //               .attr("height", 50)
+    //               .attr("fill", "white");
+
+    // rect.transition()
+    //       .duration(1500)
+    //       .delay(500)
+    //       .attr("width", 500)
+    //       .attr("fill", "blue")
+    //         .transition()
+    //         .duration(1250)
+    //         .delay(500)
+    //         .attr("fill", "green")
+    //         	.transition()
+    //         	.duration(1000)
+	   //          .delay(500)
+	   //          .attr("fill", "yellow")
+	   //          	.transition()
+	   //          	.duration(1000)
+		  //           .delay(500)
+		  //           .attr("fill", "orange")
+		  //           	.transition()
+		  //           	.duration(1000)
+			 //            .delay(500)
+			 //            .attr("fill", "red");
+            	
+            	
+//             	var margin = {top: 30, right: 40, bottom: 50, left: 50},
+
+// svg.append("g")
+//    .attr("class", "x axis")
+//    .attr("transform", "translate(0," + height + ")")
+//    .call(xAxis)
+//      .selectAll("text")  
+//      .style("text-anchor", "end")
+//      .attr("dx", "-.8em")
+//      .attr("dy", ".15em")
+//      .attr("transform", function(d) {
+//          return "rotate(-65)" 
+//      });
+	            //.attr("transform", rotate)
+					  	//.selectAll("rect")
+					  //  .attr("transform", rotate);
+          //.attr("fill", function(d) { return color(d);})
+
+          
+
+
+
+
+/////////////
+
+    </script>
+  </body>
+</html>
